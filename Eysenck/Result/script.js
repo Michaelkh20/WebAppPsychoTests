@@ -1,6 +1,6 @@
 function onLoad() {
-  var query = window.location.href.split("?")[1]; // результат - строка запроса без адреса страницы "id=someName&userMail=some@mail.com&usText=MemoText"
-  var params = query.split("&"); // результат - массив строк из пар "id=someName", "userMail=some@mail.com", "usText=MemoText"
+  let query = window.location.href.split("?")[1]; // результат - строка запроса без адреса страницы "id=someName&userMail=some@mail.com&usText=MemoText"
+  let params = query.split("&"); // результат - массив строк из пар "id=someName", "userMail=some@mail.com", "usText=MemoText"
   // теперь брать по очереди
   let extraversionScore = params[0].split("=")[1];
   let neuroticismScore = params[1].split("=")[1];
@@ -26,13 +26,26 @@ function showResults(extraversionScore, neuroticismScore, lieScore) {
     temperament.innerText += " Холерик";
   }
 
-  circle = document.getElementById("pointer");
+  let canvas = document.getElementById("canvas");
+  let context = canvas.getContext("2d");
 
-  xCoord = xShift + extraversionScore * xStep;
-  yCoord = imgSize - (yShift + neuroticismScore * yStep);
+  let img = new Image();
+  img.src = "img/eysenck_circle.png";
+  img.addEventListener("load", function () {
+    context.drawImage(img, 0, 0);
+    const xCoord = xShift + extraversionScore * xStep;
+    const yCoord = imgSize - (yShift + neuroticismScore * yStep);
+    const radius = 8;
+    const startAngle = 0; // Starting point on circle
+    const endAngle = 2 * Math.PI; // End point on circle
 
-  circle.setAttribute("cx", xCoord);
-  circle.setAttribute("cy", yCoord);
+    context.beginPath();
+    context.arc(xCoord, yCoord, radius, startAngle, endAngle);
+    context.fillStyle = "lime";
+    context.fill();
+    context.strokeStyle = "black";
+    context.stroke();
+  });
 
   const body = document.body;
   const diagram = document.getElementById("diagram");

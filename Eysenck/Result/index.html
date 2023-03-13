@@ -4,23 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="../../CSS/bootstrap.min.css" />
     <title>Результаты</title>
   </head>
-  <body onload="onLoad()">
+  <body onload="onLoad()" style="margin-left: 20px">
     <h2 id="temperament">Темперамент:</h2>
-    <div id="diagram" class="img-overlay-wrap">
-      <img id="image" src="img/eysenck_circle.png" alt="" />
-      <svg id="oSvg2" viewBox="0 0 525 525">
-        <circle
-          id="pointer"
-          cx="403"
-          cy="323"
-          fill="lime"
-          r="8"
-          stroke="black"
-        ></circle>
-      </svg>
+    <div id="diagram">
+      <canvas id="canvas" width="525" height="525"></canvas>
     </div>
     <p>
       Используя данные обследования по шкалам экстраверсии-интроверсии и
@@ -149,7 +139,9 @@
       склонного к тяжелым внутренним переживаниям таких жизненных обстоятельств,
       которые вовсе этого не заслуживают.
     </p>
-    <button id="returnButton">На главную</button>
+    <button id="returnButton" type="button" class="btn btn-primary">
+      На главную
+    </button>
     <script>
       document.getElementById("returnButton").onclick = function () {
         location.href = "../../index.html";

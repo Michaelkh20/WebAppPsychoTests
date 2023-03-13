@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Тест</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
   </head>
   <body>
-    <form id="Test">
+    <p id="questions">
       Личностный опросник Айзенка ~Часто ли вы испытываете тягу к новым
       впечатлениям, к тому, чтобы отвлечься, испытывать сильные ощущения? ~Часто
       ли вы чувствуете, что нуждаетесь в друзьях, которые могут вас понять,
@@ -60,11 +61,48 @@
       в скучную компанию? ~Бывает ли, что вы говорите о вещах, в которых совсем
       не разбираетесь? ~Беспокоитесь ли вы о своем здоровье? ~Любите ли вы
       подшутить над другими? ~Страдаете ли вы бессонницей?
+    </p>
+    <form style="margin: 30px" id="test">
+      <h1 id="caption"></h1>
+      <div id="testBlock">
+        <p id="questionNumber"></p>
+        <h4 style="margin-bottom: 30px" id="question"></h4>
+        <!-- <p><input type="radio" id="answerYes" name="Q1" />Да</p>
+        <p><input type="radio" id="answerNo" name="Q1" />Нет</p> -->
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic radio toggle button group"
+        >
+          <input
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="answerYes"
+            autocomplete="off"
+            checked=""
+          />
+          <label class="btn btn-outline-primary" for="answerYes">Да</label>
+          <input
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="answerNo"
+            autocomplete="off"
+            checked=""
+          />
+          <label class="btn btn-outline-primary" for="answerNo">Нет</label>
+        </div>
+      </div>
+      <button
+        class="btn btn-success"
+        style="margin-top: 80px"
+        id="btnNext"
+        type="button"
+      >
+        Далее
+      </button>
     </form>
     <script src="script.js"></script>
-    <script>
-      let test = new Test();
-      test.analyze();
-    </script>
   </body>
 </html>
